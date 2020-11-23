@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "e41ad38c-3ab1-447f-899f-ab55be4010ed",
+		"name": "OkpeChinonyeCollection",
+		"description": "This is Chinonye's collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "List Users Per Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base url}}/api/users?page=2",
+							"host": [
+								"{{base url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						},
+						"description": "https://reqres.in/api/users?page=2"
+					},
+					"response": []
+				},
+				{
+					"name": "Single User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base url}}/api/users/2",
+							"host": [
+								"{{base url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "https://reqres.in/api/users?page=2"
+					},
+					"response": []
+				},
+				{
+					"name": "simple automation test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d0a282e-e469-4f35-814e-027a8e2ebd15",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://docs.postman-echo.com",
+							"protocol": "https",
+							"host": [
+								"docs",
+								"postman-echo",
+								"com"
+							]
+						},
+						"description": "https://docs.postman-echo.com"
+					},
+					"response": []
+				},
+				{
+					"name": "Get blog post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "06712e91-29f7-42cd-9a3e-afe482a57f5f",
+								"exec": [
+									"pm.variables.get(\"my first blog post \");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base url}}",
+							"host": [
+								"{{base url}}"
+							]
+						},
+						"description": "{{base url}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get blog post 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "77c34ee0-846d-4905-8e47-0d86f0468d38",
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function() {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Body matches string\", function(){\r",
+									"    pm.expect(pm.response.text()).to.include(\"div class\");\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function() {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"} )\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base url}}",
+							"host": [
+								"{{base url}}"
+							]
+						},
+						"description": "{{base url}}"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base url}}/api/login",
+							"host": [
+								"{{base url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"'morpheus\",\r\n\"job\": \"leader\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base url}}/api/users",
+							"host": [
+								"{{base url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validation automation test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de721302-7668-4a61-8171-46c140810a90",
+								"exec": [
+									"pm.test(\"Status code is 200\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function() {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Body matches string\", function(){\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"} )\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function() {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"} )\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"eve.holt@reqres.in\",\r\n    \"password\" : \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "https://reqres.in/api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate body response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "94fa45c2-1303-4ba0-a99b-897d496c7a6d",
+								"exec": [
+									"postman.setEnvironmentVariable(\"header_server\", pm.response.headers.get(\"server\"));\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"eve.holt@reqres.in\",\r\n    \"password\" : \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "https://reqres.in/api/register"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "FIRST EXAMPLES",
+			"item": [
+				{
+					"name": "{{url}}/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b654898-6e41-439b-a553-f6acf5eb502e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Check if user with id1 is Leanne Graham\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].name).to.eql(\"Leanne Graham\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 11,\r\n        \"name\": \"Okpe Chinonye\",\r\n        \"username\": \"Nonye\",\r\n        \"email\": \"Sincere@april.biz\",\r\n        \"address\": {\r\n            \"street\": \"Kulas Light\",\r\n            \"suite\": \"Apt. 556\",\r\n            \"city\": \"Gwenborough\",\r\n            \"zipcode\": \"92998-3874\",\r\n            \"geo\": {\r\n                \"lat\": \"-37.3159\",\r\n                \"lng\": \"81.1496\"\r\n            }\r\n        },\r\n        \"phone\": \"1-770-736-8031 x56442\",\r\n        \"website\": \"hildegard.org\",\r\n        \"company\": {\r\n            \"name\": \"Romaguera-Crona\",\r\n            \"catchPhrase\": \"Multi-layered client-server neural-net\",\r\n            \"bs\": \"harness real-time e-markets\"\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://reqres.in/",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "html"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://jsonplaceholder.typicode.com/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base url}}/api/users/2",
+							"host": [
+								"{{base url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete blog post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abdc78c1-f3da-4c04-ab70-1c82fb64a9d4",
+								"exec": [
+									"pm.test(\"status code is 404\", function() {\r",
+									"    pm.response.to.have.status(404);\r",
+									"} );"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base url}}",
+							"host": [
+								"{{base url}}"
+							]
+						},
+						"description": "{{base url}}"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "bbdb6ee8-c89a-4acb-9683-5f6ddb6c6d5d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0395589a-74d1-4a70-9ec1-4034f4b583ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
