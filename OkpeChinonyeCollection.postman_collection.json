@@ -36,6 +36,23 @@
 				},
 				{
 					"name": "Single User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aae57ec0-433c-4544-9556-4f3df691e48b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Janet\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -94,7 +111,11 @@
 							"script": {
 								"id": "06712e91-29f7-42cd-9a3e-afe482a57f5f",
 								"exec": [
-									"pm.variables.get(\"my first blog post \");"
+									"pm.variables.get(\"my first blog post \");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -176,6 +197,89 @@
 							]
 						},
 						"description": "{{base url}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all to do entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9e3c-e6da-410b-87f3-031ef9d590d2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name response is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"    \r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}",
+							"host": [
+								"{{BaseURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single todo data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6242fd8-2326-4d8a-bba4-d172683118e3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body contains title\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"title\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"pm.test(\"Status code name is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/? todo id=2",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": " todo id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "{{BaseURL}}/? todo id=2"
 					},
 					"response": []
 				}
@@ -340,6 +444,50 @@
 						"description": "https://reqres.in/api/register"
 					},
 					"response": []
+				},
+				{
+					"name": "Create new record in database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d58cb2a-4f83-435d-828a-417c4c3e5cde",
+								"exec": [
+									"pm.test(\"Status code is 200,201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matched id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"\r",
+									"    pm.test(\"Successful POST request\", function () {\r",
+									"        pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response has Created\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -494,7 +642,12 @@
 								"exec": [
 									"pm.test(\"status code is 404\", function() {\r",
 									"    pm.response.to.have.status(404);\r",
-									"} );"
+									"pm.globals.get(\"variable_key\");\r",
+									"} );\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Not Found\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -519,6 +672,98 @@
 							]
 						},
 						"description": "{{base url}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "069d5dd9-7a23-468c-9bc4-d7907eaf058f",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Length is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Length\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"2"
+							]
+						},
+						"description": "{{URL}}/2"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "Update a user record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1a533a2-da20-4036-b357-5223792eb65b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches updatedAt\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"2"
+							]
+						},
+						"description": "{{URL}}/2"
 					},
 					"response": []
 				}
